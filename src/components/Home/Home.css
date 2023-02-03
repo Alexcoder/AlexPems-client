@@ -22,7 +22,7 @@
    .home-drop-down-list{
         text-align: start; 
         background: white; 
-        padding: 1rem 3rem; 
+        padding: 1rem 2rem; 
         border: none; 
         display: flex; 
         flex-direction: column;
@@ -30,7 +30,7 @@
         position: fixed; 
         top: 2.5rem; 
         left: 8rem; 
-        width: 12%;
+        width: 10%;
         border-radius: 0.5rem; 
         font-size: 0.8rem;
         color: blue;

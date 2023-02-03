@@ -18,7 +18,7 @@ const Home = () => {
     <div className='home-container' onClick={()=> setMenuClicked(menuClicked==="open"? "close": "open")}>
             <div style={{display:"flex",}}>
             <div className="home-top-menu" onClick={()=> setMenuClicked("open")} >
-               <div><MailOutlineIcon/></div>
+               <div><MailOutlineIcon/><span style={{background:"green", color:"white", borderRadius:"50%", padding:"0.1rem 0.5rem 0.2rem 0.5rem", position:"absolute",fontSize:"0.8rem", margin:"-0.7rem 0rem 0rem -0.5rem"}}>6</span></div>
                <div className='home-my-pems'>
                  My-pem<span style={{color:"red"}}>s</span>
                </div>
