@@ -1,0 +1,59 @@
+.main-title{
+    display: flex;
+    gap: 2rem; 
+    padding: 1rem 0rem 2.5rem 1rem; 
+    color: blue;
+}
+.main-click-button-group{
+    padding: 0.4rem 0.8rem ;
+    border-radius: 0.2rem; 
+    font-weight: 500; 
+    display: flex; 
+    gap: 0.5rem;
+}
+.bg-blue{
+    background: blue;
+}
+.bg-skyblue{
+    background: skyblue;
+}
+.bg-orange{
+    background: orange;
+}
+.bg-red{
+    background: rgb(125, 6, 6);
+}
+.main-req-header-1rem{
+    border: 1px solid lightgray;
+    padding: 0.5rem;
+    text-align: center; 
+    min-width:1rem  
+}
+.main-req-header1{
+    border: 1px solid lightgray;
+    padding: 0.5rem;
+    text-align: center; 
+    min-width:6rem  
+}
+.main-req-header-8rem{
+    border: 0.05px solid lightgray;
+    padding: 0.5rem;
+    text-align: center; 
+    min-width:8rem  
+}
+.main-req-header-5rem{
+    border: 0.05px solid lightgray;
+    padding: 0.5rem;
+    text-align: center; 
+    min-width:6rem  
+}
+.swire-start{
+    text-align:start;
+}
+.main-detail-button{
+    background:blue; 
+    color: white; 
+    border: none; 
+    padding: 0.2rem 0.5rem; 
+    border-radius: 0.2rem;   
+}

@@ -14,7 +14,7 @@
     flex-direction: column;
     gap: 1.5rem;
     background: rgb(21, 21, 98);
-    height: 100vh;
+    height: 100%;
     text-align: start;
     padding: 2.5rem 0.5rem 0.5rem 0.6rem;
 }

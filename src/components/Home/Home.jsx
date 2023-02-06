@@ -4,6 +4,7 @@ import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import { dummyApi } from '../Orders/mainObject';
 import "./Home.css";
 
 import { useGlobalState } from '../../state/Context';
@@ -52,7 +53,7 @@ const Home = () => {
             </div>
 
             <div style={{marginTop:"1.6rem",color:"white", display:"grid", gridTemplateColumns:"1fr 1fr 1fr 1fr", gap:"1rem",padding:"0rem 1rem"}}>
-              <div onClick={()=> navigate("/orders")} style={{background:"green", borderRadius:"0.2rem", border:"0.1px solid white"}}><Category total={300} type={"Request And Orders"} delivered={21} ICON={<ShoppingCartIcon sx={{fontSize:"3rem"}}/>} /></div> 
+              <div onClick={()=> navigate("/orders")} style={{background:"green", borderRadius:"0.2rem", border:"0.1px solid white"}}><Category total={dummyApi.length} type={"Request And Orders"} delivered={21} ICON={<ShoppingCartIcon sx={{fontSize:"3rem"}}/>} /></div> 
               <div style={{background:"brown", borderRadius:"0.2rem", border:"0.1px solid white"}}><Category total={276} type={"Cargo Manifest"} delivered={28} ICON={<LocalShippingIcon sx={{fontSize:"3rem"}}/>} /></div> 
               <div style={{background:"yellow", borderRadius:"0.2rem", border:"0.1px solid white"}}><Category total={79} type={"Facility"} delivered={21} /></div> 
               <div style={{background:"orange", borderRadius:"0.2rem", border:"0.1px solid white"}}><Category total={95} type={"Fund Retirement"} delivered={90} /></div> 
