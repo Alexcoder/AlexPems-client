@@ -1,9 +1,9 @@
 import React from 'react';
-import "./Orders.css";
 import HomeIcon from '@mui/icons-material/Home';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import BuildIcon from '@mui/icons-material/Build';
 import { useNavigate } from 'react-router-dom';
+import "../AllCss/Orders.css";
 
 
 const Sidebar = () => { 

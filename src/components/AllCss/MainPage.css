@@ -1,8 +1,9 @@
-.main-title{
+.mini-nav{
     display: flex;
-    gap: 2rem; 
+    gap: 1.7rem; 
     padding: 1rem 0rem 2.5rem 1rem; 
     color: blue;
+    width: 90%;
 }
 .main-click-button-group{
     padding: 0.4rem 0.8rem ;

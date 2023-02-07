@@ -1,39 +1,78 @@
-import React from 'react';
-import HomeIcon from '@mui/icons-material/Home';
-import LocalShippingIcon from '@mui/icons-material/LocalShipping';
-import BuildIcon from '@mui/icons-material/Build';
+import React, {useState} from 'react';
 import AddIcon from '@mui/icons-material/Add';
 import { dummyApi } from './mainObject';
+import Pagination from '../Pagination/Pagination';
+import { useGlobalState } from '../../state/Context';
+import { useNavigate } from 'react-router-dom';
 
-import "./MainPage.css";
+import "../AllCss/MainPage.css";
 
 
 const MainPage = () => {
-  return (
+   const navigate = useNavigate();
+   const {setSelected, search, setSearch}= useGlobalState();
+   const [currentPage, setCurrentPage]= useState(1)
+   const postsPerPage = 5;
+
+   const filtereddummyApi = dummyApi.filter((item)=>
+    Object.entries(search).every(([key,value])=>
+      item[key].includes(value) || item[key].toLowerCase().includes(value)
+   ))
+
+   const indexOfLastPost = currentPage * postsPerPage;
+   const indexOfFirstPost = indexOfLastPost - postsPerPage;
+   const currentdummyApi = filtereddummyApi.slice( indexOfFirstPost, indexOfLastPost );
+   const myTotalPage = Math.ceil(filtereddummyApi.length/postsPerPage);
+
+   // Change Page
+   const paginate = (number)=> setCurrentPage(number)
+
+   const handleChange =(e)=>{
+      const name= e.target.name;
+      const value= e.target.value;
+      setSearch( {...search, [name] : value } )
+   }
+
+   const handleNext=()=>{
+      if(currentPage< myTotalPage){
+         setCurrentPage(currentPage+1)
+         setSelected(currentPage)
+      }else{
+         // setCurrentPage(1)
+         // setSelected(0)
+         setCurrentPage(myTotalPage) //Remains At Last Page
+         setSelected(myTotalPage-1)
+      }
+   }
+
+   const handlePrevious=()=>{
+      if(currentPage> 1){
+         setCurrentPage(currentPage-1)
+         setSelected(currentPage-2)
+      }else{
+         // setCurrentPage(myTotalPage)
+         setCurrentPage(1) //Remains At First Page
+         setSelected(0)
+      }
+   }
+
+   
+
+   return (
     <main>
-       <div>
-          <section className='main-title'>
-             <div>My Request & Orders</div>
-             <div>All Request & Orders</div>
-             <div>Add New Orders</div>
-             <div>Material Request Search</div>
-             <div>Cash Request Search</div>
-             <div>Finance Summary</div>
-             <div style={{display:"flex"}}><HomeIcon/> <div>Dashboard</div></div>
-          </section>
-          <hr/>
+      <div>
           <section style={{border:"0.5px solid lightgray",margin:"0rem 1.5rem", padding:"1rem 1rem 1rem 1rem", }}>
              <div style={{fontSize:"1.2rem", marginBottom:"1rem"}}>Requests & Orders Summary</div>
              <hr style={{border:"1.3px solid lightgray", marginBottom:"1rem"}}/> 
              <div style={{display:"flex", gap:"1rem", justifyContent:"center", color:"white"}}>
-                <div className="main-click-button-group bg-blue"><AddIcon sx={{fontWeight:"700"}}/><div>Add New Material Request</div></div>
+                <div onClick={()=> navigate("/request")} className="main-click-button-group bg-blue"><AddIcon sx={{fontWeight:"700"}}/><div>Add New Material Request</div></div>
                 <div className="main-click-button-group bg-skyblue" ><AddIcon sx={{fontWeight:"700"}}/><div>Add New Cash Request</div></div>
                 <div className="main-click-button-group bg-orange"><AddIcon sx={{fontWeight:"700"}}/><div>Add Equipment Fuel Request</div></div>
                 <div className="main-click-button-group bg-red" ><AddIcon sx={{fontWeight:"700"}}/><div>Add Vehicle Fuel Request</div></div>            
              </div>
           <section style={{display:"flex", justifyContent:"space-between", margin:"1rem 0rem 0.5rem 0rem"}}>
              <div style={{border:"0.5px solid lightgray", padding:"0.3rem 1rem", borderRadius:"0.2rem",color:"gray"}}>Excel</div>
-             <div><span>Search</span>: <input style={{border:"2px solid gray", padding:"0.3rem",}}/></div>
+             <div><span>Search</span>: <input name="description" value={search.description} onChange={handleChange} style={{border:"2px solid gray", padding:"0.3rem",}}/></div>
           </section>
           <section >
              <div style={{maxWidth:"69rem",overflow:"auto", fontSize:"0.9rem"}}>
@@ -58,7 +97,7 @@ const MainPage = () => {
              </div>
              <section>
              {
-              dummyApi.map((item)=>
+              currentdummyApi.map((item)=>
               
              <div key={item.id} style={{display:"flex"}}>
                 <div className="main-req-header-1rem bg-orange">{item.number}</div>
@@ -98,6 +137,16 @@ const MainPage = () => {
             )
           }
           </section>
+          <div style={{margin:"1rem", display:"flex", alignItems:"center", gap:"1rem", cursor:"pointer"}}>
+            <div onClick={handlePrevious}>Previous</div>
+           <Pagination 
+             postsPerPage={postsPerPage} 
+             totalPosts={filtereddummyApi.length}
+             paginate={paginate}
+             />
+             <div onClick={handleNext}>Next</div>
+          </div>
+
             
              </div>
           </section>

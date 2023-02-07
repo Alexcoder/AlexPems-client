@@ -5,7 +5,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { dummyApi } from '../Orders/mainObject';
-import "./Home.css";
+import "../AllCss/Home.css";
 
 import { useGlobalState } from '../../state/Context';
 import { useNavigate } from 'react-router-dom';
