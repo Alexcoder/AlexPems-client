@@ -1,9 +1,11 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import AddIcon from '@mui/icons-material/Add';
 import { dummyApi } from './mainObject';
 import Pagination from '../Pagination/Pagination';
 import { useGlobalState } from '../../state/Context';
 import { useNavigate } from 'react-router-dom';
+import SkipNextIcon from '@mui/icons-material/SkipNext';
+import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
 
 import "../AllCss/MainPage.css";
 
@@ -16,7 +18,9 @@ const MainPage = () => {
 
    const filtereddummyApi = dummyApi.filter((item)=>
     Object.entries(search).every(([key,value])=>
-      item[key].includes(value) || item[key].toLowerCase().includes(value)
+      item[key].includes(value) 
+      || item[key].toLowerCase().includes(value)
+      || item[key].toUpperCase().includes(value)      
    ))
 
    const indexOfLastPost = currentPage * postsPerPage;
@@ -56,6 +60,14 @@ const MainPage = () => {
       }
    }
 
+   const serialNumber = (id) => {
+      const serial = filtereddummyApi.findIndex((item)=> item.id===id);
+      return serial+1;
+   }
+
+   useEffect(()=>{
+      search && setSelected(0); setCurrentPage(1);
+   },[search, setSelected])
    
 
    return (
@@ -72,7 +84,7 @@ const MainPage = () => {
              </div>
           <section style={{display:"flex", justifyContent:"space-between", margin:"1rem 0rem 0.5rem 0rem"}}>
              <div style={{border:"0.5px solid lightgray", padding:"0.3rem 1rem", borderRadius:"0.2rem",color:"gray"}}>Excel</div>
-             <div><span>Search</span>: <input name="description" value={search.description} onChange={handleChange} style={{border:"2px solid gray", padding:"0.3rem",}}/></div>
+             <div><span>Search</span>: <input name="requestId" value={search.requestId} onChange={handleChange} style={{border:"2px solid gray", padding:"0.3rem",}}/></div>
           </section>
           <section >
              <div style={{maxWidth:"69rem",overflow:"auto", fontSize:"0.9rem"}}>
@@ -100,7 +112,7 @@ const MainPage = () => {
               currentdummyApi.map((item)=>
               
              <div key={item.id} style={{display:"flex"}}>
-                <div className="main-req-header-1rem bg-orange">{item.number}</div>
+                <div className="main-req-header-1rem bg-orange">{serialNumber(item.id)}</div>
                 <div className="main-req-header-5rem bg-orange">{item.jobDetail}</div>
                 <div className="main-req-header-8rem bg-orange">{item.requestId}</div>
                 <div className="main-req-header-5rem bg-orange">{item.requestDate}</div>
@@ -138,13 +150,13 @@ const MainPage = () => {
           }
           </section>
           <div style={{margin:"1rem", display:"flex", alignItems:"center", gap:"1rem", cursor:"pointer"}}>
-            <div onClick={handlePrevious}>Previous</div>
+            <div onClick={handlePrevious}><SkipPreviousIcon/></div>
            <Pagination 
              postsPerPage={postsPerPage} 
              totalPosts={filtereddummyApi.length}
              paginate={paginate}
              />
-             <div onClick={handleNext}>Next</div>
+             <div onClick={handleNext}><SkipNextIcon/></div>
           </div>
 
             
