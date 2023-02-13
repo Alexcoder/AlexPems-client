@@ -6,6 +6,7 @@ import { useGlobalState } from '../../state/Context';
 import { useNavigate } from 'react-router-dom';
 import SkipNextIcon from '@mui/icons-material/SkipNext';
 import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 import "../AllCss/MainPage.css";
 
@@ -157,6 +158,7 @@ const MainPage = () => {
              paginate={paginate}
              />
              <div onClick={handleNext}><SkipNextIcon/></div>
+             {/* <div onClick={handleNext}><ArrowForwardIosIcon/></div> */}
           </div>
 
             
