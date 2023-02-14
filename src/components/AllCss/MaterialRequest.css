@@ -85,7 +85,8 @@
     border: 1px solid lightgray;
     display: grid;
     place-content: center;
-    font-weight: 700;
+    font-weight: 900;
+    font-size: 1.2rem;
 }
 
 .mat-btn-add{ color: blue}

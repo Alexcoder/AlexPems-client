@@ -5,7 +5,7 @@ import { OrderCategory, Department, FundingStatus } from './Sub/utils';
 import FillOutForm from './Sub/FillOutForm';
 import "../AllCss/MaterialRequest.css";
 
-const MaterialRequest = () => {
+const CashRequest = () => {
     const inputInitial={
         desc:"",
         part:"",
@@ -40,10 +40,10 @@ const MaterialRequest = () => {
       const handleCount =()=> setInputArray([...inputArray, inputInitial ])
 
 
-      // const handleTotal =()=>{
-      //   const total = inputArray.reduce((acc, curr)=> Number(acc) + (Number(curr.desc) *Number(curr.oem)),0)
-      //   return total
-      // }
+      const handleTotal =()=>{
+        const total = inputArray.reduce((acc, curr)=> Number(acc) + (Number(curr.desc) *Number(curr.oem)),0)
+        return total
+      }
   
   
 console.log(inputArray)
@@ -55,7 +55,7 @@ console.log(inputArray)
         <div className="MR-paper-wrap">
             <div style={{float:"right", color:"gray"}}><CloseIcon/></div>
             <section style={{padding:"0.7rem"}}>
-             <div style={{fontSize:"1.5rem"}}>Materials Order</div>
+             <div style={{fontSize:"1.5rem"}}>Add New Cash Request</div>
              <hr style={{margin:"1rem 0rem", border:"1.3px solid lightgray"}}/>
             <div className="MR-paper-content">
                 <InputProp  
@@ -163,52 +163,14 @@ console.log(inputArray)
                   name="fundingStatus" 
                   value={all.fundingStatus} 
                   onChange={handleChange}/>
-                <TextProp 
-                  instruction1={"Applicable Specifications, Drawings, Process Requirements, Inspection Instructions."}
-                  instruction2={"Select from dropdown"}
-                  instruction3={"If above is Others, please specify"}
-                  instruction4={"Enter remark if Quality Management System Requirement is Others"}
-                  itemMap={FundingStatus} 
-                  selectName="fundingStatus" 
-                  selectValue={all.fundingStatus} 
-                  inputName={all.fundingStatus} 
-                  inputValue={all.fundingStatus} 
-                  onChange={handleChange}/>
-                <TextProp 
-                  instruction1={"Personnel’s Qualification Requirement"}
-                  instruction2={"Select from dropdown"}
-                  instruction3={"If above is Others, please specify"}
-                  instruction4={"Enter remark if Quality Management System Requirement is Others"}
-                  itemMap={FundingStatus} 
-                  selectName="fundingStatus" 
-                  selectValue={all.fundingStatus} 
-                  inputName={all.fundingStatus} 
-                  inputValue={all.fundingStatus} 
-                  onChange={handleChange}/>
-                <TextProp 
-                  instruction1={"Quality Management System Requirement"}
-                  instruction2={"Select from dropdown"}
-                  instruction3={"If above is Others, please specify"}
-                  instruction4={"Enter remark if Quality Management System Requirement is Others"}
-                  itemMap={FundingStatus} 
-                  selectName="fundingStatus" 
-                  selectValue={all.fundingStatus} 
-                  inputName={all.fundingStatus} 
-                  inputValue={all.fundingStatus} 
-                  onChange={handleChange}/>
             </div>
              <section className='mat-req-input-loop' style={{marginTop:"2rem"}}>
              <div style={{display:"flex",paddingLeft:"1rem" }}>
                     <div className="mat-desc">Description</div>
-                    <div className='mat-part-no'>	Part <br/> Number</div>
-                    <div className='mat-oem'>	OEM</div>
-                    <div className='mat-justification' >Justification</div>
-                    <div className='mat-quantity' >Quantity</div>
-                    <div className='mat-quote'>Old <br/> Quote</div>
-                    <div className='mat-quote'>Quote <br/> 1</div>
-                    <div className='mat-quote'>Quote <br/> 2</div>
-                    <div className='mat-quote'>Quote <br/> 3</div>
-                    <div className='mat-acc-criteria' >Acceptance <br/> Criteria</div>
+                    <div className='mat-part-no'>Justification</div>
+                    <div className='mat-oem'>Unit Cost</div>
+                    <div className='mat-justification' >Quantity</div>
+                    <div className='mat-quantity' >Amount</div>
                     <div onClick={handleCount}className='mat-btn-add' >+</div>
                   </div>
                 { inputArray.map((item,i)=>
@@ -218,7 +180,7 @@ console.log(inputArray)
                 )}
                 <div style={{width:"100%", display:"grid", placeItems:"center", marginTop:"1rem"}}>
                  <button style={{width:"20%", padding:"0.5rem 0rem"}}>SUBMIT</button>
-                 {/* <div>total: {handleTotal()}</div> */}
+                 <div>total: {handleTotal()}</div>
                 </div>
 
              </section>
@@ -229,4 +191,4 @@ console.log(inputArray)
   )
 }
 
-export default MaterialRequest
+export default CashRequest

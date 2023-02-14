@@ -6,7 +6,7 @@ import { useGlobalState } from '../../state/Context';
 import { useNavigate } from 'react-router-dom';
 import SkipNextIcon from '@mui/icons-material/SkipNext';
 import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+// import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 import "../AllCss/MainPage.css";
 
@@ -78,8 +78,8 @@ const MainPage = () => {
              <div style={{fontSize:"1.2rem", marginBottom:"1rem"}}>Requests & Orders Summary</div>
              <hr style={{border:"1.3px solid lightgray", marginBottom:"1rem"}}/> 
              <div style={{display:"flex", gap:"1rem", justifyContent:"center", color:"white"}}>
-                <div onClick={()=> navigate("/request")} className="main-click-button-group bg-blue"><AddIcon sx={{fontWeight:"700"}}/><div>Add New Material Request</div></div>
-                <div className="main-click-button-group bg-skyblue" ><AddIcon sx={{fontWeight:"700"}}/><div>Add New Cash Request</div></div>
+                <div onClick={()=> navigate("/material-request")} className="main-click-button-group bg-blue"><AddIcon sx={{fontWeight:"700"}}/><div>Add New Material Request</div></div>
+                <div onClick={()=> navigate("/cash-request")} className="main-click-button-group bg-skyblue" ><AddIcon sx={{fontWeight:"700"}}/><div>Add New Cash Request</div></div>
                 <div className="main-click-button-group bg-orange"><AddIcon sx={{fontWeight:"700"}}/><div>Add Equipment Fuel Request</div></div>
                 <div className="main-click-button-group bg-red" ><AddIcon sx={{fontWeight:"700"}}/><div>Add Vehicle Fuel Request</div></div>            
              </div>
