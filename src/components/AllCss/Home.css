@@ -1,6 +1,7 @@
   .home-container{
    display: grid;
    text-align:center;
+   justify-content: center;
    background: rgb(13, 13, 114);
    width: 100%;
    padding-bottom: 2rem;
@@ -35,7 +36,24 @@
         font-size: 0.8rem;
         color: blue;
    }
-   .mui-arrow-down >keyboardArrowDownIcon{
+   .home-tabs{
+       margin-top:1.6rem;
+       color:white; 
+       display:grid; 
+       grid-template-columns:1fr 1fr 1fr 1fr; 
+       gap:1rem;
+       padding: 0rem 1rem;
+   }
+   /* .mui-arrow-down >keyboardArrowDownIcon{
     font-size: 4rem; 
     margin-top: 0.2rem;
+   } */
+
+   @media screen and (max-width: 1024px) {
+     .home-tabs{
+          /* display: flex;
+          flex-direction: column; */
+          grid-template-columns:1fr ; 
+          gap:1rem;
+      }      
    }
