@@ -1,105 +1,139 @@
 import React, {useState} from 'react';
 import CloseIcon from "@mui/icons-material/Close"
-import {SelectProp, InputProp,TextAreaProp, TextProp} from './Sub/props';
+import {SelectProp, InputProp,TextAreaProp, } from './Sub/props';
+// TextProp
 import { OrderCategory, Department, FundingStatus } from './Sub/utils';
 import FillOutForm from './Sub/FillOutForm';
-import "../AllCss/MaterialRequest.css";
+import "./styles/CashRequest.css";
 
 const CashRequest = () => {
     const inputInitial={
-        desc:"",
-        part:"",
-        oem:"",
-        justification:"",
-        quantity:"",
-        oldQuote:"",
-        quote1:"",
-        quote2:"",
-        quote3:"",
-        accCriteria:"",
+        desc: "",
+        justification: "",
+        unitCost: "",
+        quantity: "",
+        amount: "",
       }
 
-    const [inputArray, setInputArray] = useState([inputInitial]);
-
-    const [all, setAll] = useState({
+      
+      const [all, setAll] = useState({
         category:"",
-        orderType:"",
-        jobDetail:"",
+        // orderType:"",
+        // jobDetail:"",
         requestId: localStorage.getItem("user")?._id || "",
         requestor: localStorage.getItem("user")?.name || "",
-        amount:"",
-        
-        orders:"",
+        currency:"",
+        rigAssignment:"",
+        jobNumber:"",
         department:"",
         description:"",
-        fundingStatus:"",
-        requestDate: "",
+        paymentAccount:"",
+        justification:"",
+        baseOffice:"",
+        requiredDate: "",
+        inputArray: [inputInitial],
     })
       const handleChange = (e) =>{ setAll({...all, [e.target.name]: e.target.value}) }
 
-      const handleCount =()=> setInputArray([...inputArray, inputInitial ])
+      const handleCount =()=> setAll({...all, inputArray: [...all.inputArray, inputInitial ]})
 
 
       const handleTotal =()=>{
-        const total = inputArray.reduce((acc, curr)=> Number(acc) + (Number(curr.desc) *Number(curr.oem)),0)
-        return total
+        // const total = all.inputArray.reduce((acc, curr)=> Number(acc) + (Number(curr.desc) *Number(curr.oem)),0)
+        const total = all.inputArray.reduce((acc, curr)=> Number(acc) + (Number(curr.unitCost *curr.quantity)),0)
+        const formatted = Intl.NumberFormat().format(total);
+        return formatted   
       }
   
-  
-console.log(inputArray)
 
 
 
   return (
-    <div className="MR-container">
-        <div className="MR-paper-wrap">
+    <div className="CR-container">
+        <div className="CR-paper-wrap">
             <div style={{float:"right", color:"gray"}}><CloseIcon/></div>
             <section style={{padding:"0.7rem"}}>
              <div style={{fontSize:"1.5rem"}}>Add New Cash Request</div>
              <hr style={{margin:"1rem 0rem", border:"1.3px solid lightgray"}}/>
-            <div className="MR-paper-content">
+            <div className="CR-paper-content">
                 <InputProp  
-                  title={"Order Request Title"} 
+                  title={"Request Title"} 
                   instruction="Enter the Title for this order" 
                   name="description" 
                   value={all.description} 
                   onChange={handleChange}/>
                 <SelectProp 
-                  title={"Orders Category"} 
+                  title={"Request Category"} 
                   instruction="Select from dropdown"
                   itemMap={OrderCategory} 
                   name="orders" 
-                  value={all.orders}  
+                  value={all.category}  
                   onChange={handleChange}/>
                 <SelectProp 
                   title={"Department"} 
                   instruction="Select from dropdown"
-                  itemMap={Department} 
-                  name="department" 
-                  value={all.department} 
+                  itemMap={OrderCategory} 
+                  name="orders" 
+                  value={all.department}  
                   onChange={handleChange}/>
-                <SelectProp 
-                  title={"Equipment/ Tool Name"} 
-                  instruction="Select from dropdown"
-                  itemMap={Department} 
-                  name="department" 
-                  value={all.department} 
+                <TextAreaProp  
+                  title={"Payment Account Details"} 
+                  instruction="Enter the name and bank account details to be funded" 
+                  name="paymentAccount" 
+                  value={all.paymentAccount} 
                   onChange={handleChange}/>
                 <InputProp  
-                  title={"Material Required Date"} 
-                  instruction="Select date material is needed" 
-                  name="requestDate" 
-                  value={all.requestDate} 
+                  title={"Funds Required Date"} 
+                  instruction="Select date fund is needed" 
+                  type="date"
+                  name="requiredDate" 
+                  value={all.requiredDate} 
                   onChange={handleChange}/>
                 <SelectProp 
-                  title={"Funding Status"} 
+                  title={"Emergency Request"} 
                   instruction="Select urgency for material needed"
-                  itemMap={FundingStatus} 
-                  name="fundingStatus" 
-                  value={all.fundingStatus} 
+                  itemMap={Department} 
+                  name="department" 
+                  value={all.department} 
+                  onChange={handleChange}/>
+                <TextAreaProp  
+                  title={"Request Justification"} 
+                  instruction="Enter the justification for this request" 
+                  name="justification" 
+                  value={all.justification} 
                   onChange={handleChange}/>
                 <SelectProp 
-                  title={"Serial Number"} 
+                  title={"Base Office"} 
+                  instruction="Select base of operation"
+                  itemMap={FundingStatus} 
+                  name="baseOffice" 
+                  value={all.baseOffice} 
+                  onChange={handleChange}/>
+                <SelectProp 
+                  title={"Job Number"} 
+                  instruction="Auto Details"
+                  itemMap={Department} 
+                  name="jobNumber" 
+                  value={all.jobNumber} 
+                  onChange={handleChange}/>                 
+{/* PUT ATTACHMENT HERE */}
+                 <SelectProp 
+                  title={"Currency"} 
+                  instruction="Select from dropdown"
+                  itemMap={FundingStatus} 
+                  name="currency" 
+                  value={all.currency} 
+                  onChange={handleChange}/>
+                 <SelectProp 
+                  title={"Rig Assignment"} 
+                  instruction="Select from dropdown"
+                  itemMap={FundingStatus} 
+                  name="rigAssignment" 
+                  value={all.rigAssignment} 
+                  onChange={handleChange}/>
+
+                {/* <SelectProp 
+                  title={"Department"} 
                   instruction="Select from dropdown"
                   itemMap={Department} 
                   name="department" 
@@ -116,19 +150,6 @@ console.log(inputArray)
                   instruction="Auto Details" 
                   name="requestDate" 
                   value={all.requestDate} 
-                  onChange={handleChange}/>
-                <TextAreaProp  
-                  title={"Order Justification"} 
-                  instruction="Auto Details" 
-                  name="requestDate" 
-                  value={all.requestDate} 
-                  onChange={handleChange}/>
-                <SelectProp 
-                  title={"Rig Assignment"} 
-                  instruction="Select from dropdown"
-                  itemMap={FundingStatus} 
-                  name="fundingStatus" 
-                  value={all.fundingStatus} 
                   onChange={handleChange}/>
                 <InputProp  
                   title={"Attach Sourced Quote 1:"} 
@@ -162,25 +183,25 @@ console.log(inputArray)
                   itemMap={FundingStatus} 
                   name="fundingStatus" 
                   value={all.fundingStatus} 
-                  onChange={handleChange}/>
+                  onChange={handleChange}/> */}
             </div>
-             <section className='mat-req-input-loop' style={{marginTop:"2rem"}}>
+             <section className='cash-req-input-loop' style={{marginTop:"2rem"}}>
              <div style={{display:"flex",paddingLeft:"1rem" }}>
-                    <div className="mat-desc">Description</div>
-                    <div className='mat-part-no'>Justification</div>
-                    <div className='mat-oem'>Unit Cost</div>
-                    <div className='mat-justification' >Quantity</div>
-                    <div className='mat-quantity' >Amount</div>
-                    <div onClick={handleCount}className='mat-btn-add' >+</div>
+                    <div className="cash-desc">Description</div>
+                    <div className='cash-justification' >Justification</div>
+                    <div className='cash-cost'>Unit Cost</div>
+                    <div className='cash-quantity' >Quantity</div>
+                    <div className='cash-amount'>Amount</div>
+                    <div onClick={handleCount}className='cash-btn-add' >+</div>
                   </div>
-                { inputArray.map((item,i)=>
+                { all.inputArray.map((item,i)=>
                     <div key={i} >
-                      <FillOutForm item={item} i={i} inputArray={inputArray} setInputArray={setInputArray}/>
+                      <FillOutForm item={item} i={i} all={all} setAll={setAll}/>
                    </div>                
                 )}
                 <div style={{width:"100%", display:"grid", placeItems:"center", marginTop:"1rem"}}>
                  <button style={{width:"20%", padding:"0.5rem 0rem"}}>SUBMIT</button>
-                 <div>total: {handleTotal()}</div>
+                 <div style={{color:"gray",}}>Total cost: <span style={{color:"black", fontWeight:"600"}}>&#x20A6;{handleTotal()}:00</span></div>
                 </div>
 
              </section>

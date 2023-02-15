@@ -18,10 +18,8 @@ const MaterialRequest = () => {
         quote3:"",
         accCriteria:"",
       }
-
-    const [inputArray, setInputArray] = useState([inputInitial]);
-
-    const [all, setAll] = useState({
+      
+      const [all, setAll] = useState({
         category:"",
         orderType:"",
         jobDetail:"",
@@ -34,19 +32,15 @@ const MaterialRequest = () => {
         description:"",
         fundingStatus:"",
         requestDate: "",
-    })
+        inputArray:[inputInitial],
+      })
       const handleChange = (e) =>{ setAll({...all, [e.target.name]: e.target.value}) }
-
-      const handleCount =()=> setInputArray([...inputArray, inputInitial ])
-
-
-      // const handleTotal =()=>{
-      //   const total = inputArray.reduce((acc, curr)=> Number(acc) + (Number(curr.desc) *Number(curr.oem)),0)
-      //   return total
-      // }
+      
+      // const handleCount =()=> setInputArray([...inputArray, inputInitial ])
+      const handleCount =()=> setAll({...all, inputArray: [...all.inputArray, inputInitial] })
+        
   
-  
-console.log(inputArray)
+console.log(all.inputArray)
 
 
 
@@ -209,16 +203,16 @@ console.log(inputArray)
                     <div className='mat-quote'>Quote <br/> 2</div>
                     <div className='mat-quote'>Quote <br/> 3</div>
                     <div className='mat-acc-criteria' >Acceptance <br/> Criteria</div>
-                    <div onClick={handleCount}className='mat-btn-add' >+</div>
+                    <div onClick={handleCount} className='mat-btn-add' >+</div>
                   </div>
-                { inputArray.map((item,i)=>
+                { all.inputArray.map((item,i)=>
                     <div key={i} >
-                      <FillOutForm item={item} i={i} inputArray={inputArray} setInputArray={setInputArray}/>
+                      {/* <FillOutForm item={item} i={i} inputArray={inputArray} setInputArray={setInputArray}/> */}
+                      <FillOutForm item={item} i={i} all={all} setAll={setAll}/>
                    </div>                
                 )}
                 <div style={{width:"100%", display:"grid", placeItems:"center", marginTop:"1rem"}}>
                  <button style={{width:"20%", padding:"0.5rem 0rem"}}>SUBMIT</button>
-                 {/* <div>total: {handleTotal()}</div> */}
                 </div>
 
              </section>
