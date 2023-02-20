@@ -44,16 +44,46 @@
        gap:1rem;
        padding: 0rem 1rem;
    }
-   /* .mui-arrow-down >keyboardArrowDownIcon{
-    font-size: 4rem; 
-    margin-top: 0.2rem;
-   } */
+   .home-geoplex-text{
+    font-size: 6rem;
+    color: white;
+    font-weight: 620;
+  }
+  .home-personnel{
+     font-size: 2.42rem;
+     color: white;
+     font-weight: 600;
+   }
+
+  .home-mpems{
+     font-size: 1.3rem;
+     font-weight: 400;
+   }
 
    @media screen and (max-width: 1024px) {
      .home-tabs{
-          /* display: flex;
-          flex-direction: column; */
-          grid-template-columns:1fr ; 
+          grid-template-columns:1fr 1fr ; 
           gap:1rem;
-      }      
+      }  
+      .home-geoplex-text{
+        font-size: 4rem;
+      }    
+   }
+   @media screen and (max-width: 620px) {
+     .home-tabs{
+          grid-template-columns:1fr  ; 
+          gap:1rem;
+      }  
+      .home-geoplex-text{
+        font-size: 2rem;
+      }
+      .home-personnel{
+        font-size: 1.5rem;
+      }
+   
+     .home-mpems{
+        font-size: 1.3rem;
+      }
+   
+        
    }

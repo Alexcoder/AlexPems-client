@@ -45,11 +45,11 @@ const Home = () => {
             </div>
 
             <div style={{margin:"3rem 0rem 4rem 0rem"}}>
-               <div style={{fontSize:"6rem", color:"white", fontWeight:"620"}}>Geople<span style={{color:"red"}}>x</span></div>
+               <div className="home-geoplex-text">Geople<span style={{color:"red"}}>x</span></div>
             </div>
-            <div style={{color:"white", fontSize:"2.42rem", fontWeight:"600"}} >
+            <div className="home-personnel" >
                 PERSONNEL & EQUIPMENT MANAGEMENT SYSTEM <br/> 
-               <span  style={{fontSize:"1.3rem", fontWeight:"400"}}>(MPEMS)</span>
+               <span className="home-mpems" style={{fontSize:"1.3rem", fontWeight:"400"}}>(MPEMS)</span>
             </div>
 
             <div className="home-tabs">
