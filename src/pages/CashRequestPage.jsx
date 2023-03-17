@@ -7,14 +7,12 @@ import "../components/AllCss/Orders.css";
 const CashRequestPage = () => {
   return (
     <div className='orders-container'>
-      <div style={{display:"flex"}}>
-         <Sidebar/>
-          <div style={{display: "flex", flexDirection:"column"}}>
+          <div style={{}}>
             <Navbar/>
             <MiniNav/>
             <CashRequest/>
           </div>
-      </div>
+         <Sidebar/>
     </div>
   )
 }

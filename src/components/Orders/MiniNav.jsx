@@ -6,7 +6,7 @@ import "../AllCss/MainPage.css";
 
 const MiniNav = () => {
   return (
-    <div>
+    <div className='mini-nav-cont' style={{marginTop:"4rem", }}>
           <section className='mini-nav'>
              <div>My Request & Orders</div>
              <div>All Request & Orders</div>
@@ -16,7 +16,7 @@ const MiniNav = () => {
              <div>Finance Summary</div>
              <div style={{display:"flex"}}><HomeIcon/> <div>Dashboard</div></div>
           </section>
-          <hr style={{border:"0.5px solid lightgray"}}/>
+          <hr style={{border:"0.5px solid lightgray", width:"100%"}}/>
 
     </div>
   )

@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import CloseIcon from "@mui/icons-material/Close"
 import {SelectProp, InputProp,TextAreaProp, TextProp} from './Sub/props';
-import { OrderCategory, Department, FundingStatus } from './Sub/utils';
+import { OrderCategory, Department, FundingStatus, Equipment, SerialNumber, JobNumber, BaseOffice,
+        PersonnelQualification, RigAssignment, QMS} from './Sub/utils';
 import FillOutForm from './Sub/FillOutForm';
 import "../AllCss/MaterialRequest.css";
 
@@ -20,27 +21,31 @@ const MaterialRequest = () => {
       }
       
       const [all, setAll] = useState({
-        category:"",
-        orderType:"",
-        jobDetail:"",
         requestId: localStorage.getItem("user")?._id || "",
         requestor: localStorage.getItem("user")?.name || "",
-        amount:"",
         
-        orders:"",
+        title:"",
+        category:"",
         department:"",
-        description:"",
         fundingStatus:"",
         requestDate: "",
+        equipment: "",
+        serialNumber: "",
+        base: "",
+        jobNumber: "",
+        justification: "",
+        rigassignment: "",
+        qms: "",
+        personnelQualification:"",
+        personnelQualification2:"",
         inputArray:[inputInitial],
       })
       const handleChange = (e) =>{ setAll({...all, [e.target.name]: e.target.value}) }
       
-      // const handleCount =()=> setInputArray([...inputArray, inputInitial ])
       const handleCount =()=> setAll({...all, inputArray: [...all.inputArray, inputInitial] })
         
   
-console.log(all.inputArray)
+console.log(all)
 
 
 
@@ -55,15 +60,15 @@ console.log(all.inputArray)
                 <InputProp  
                   title={"Order Request Title"} 
                   instruction="Enter the Title for this order" 
-                  name="description" 
-                  value={all.description} 
+                  name="title" 
+                  value={all.title} 
                   onChange={handleChange}/>
                 <SelectProp 
                   title={"Orders Category"} 
                   instruction="Select from dropdown"
                   itemMap={OrderCategory} 
-                  name="orders" 
-                  value={all.orders}  
+                  name="category" 
+                  value={all.category}  
                   onChange={handleChange}/>
                 <SelectProp 
                   title={"Department"} 
@@ -75,14 +80,15 @@ console.log(all.inputArray)
                 <SelectProp 
                   title={"Equipment/ Tool Name"} 
                   instruction="Select from dropdown"
-                  itemMap={Department} 
-                  name="department" 
-                  value={all.department} 
+                  itemMap={Equipment} 
+                  name="equipment" 
+                  value={all.equipment} 
                   onChange={handleChange}/>
                 <InputProp  
                   title={"Material Required Date"} 
                   instruction="Select date material is needed" 
                   name="requestDate" 
+                  type="Date"
                   value={all.requestDate} 
                   onChange={handleChange}/>
                 <SelectProp 
@@ -95,63 +101,52 @@ console.log(all.inputArray)
                 <SelectProp 
                   title={"Serial Number"} 
                   instruction="Select from dropdown"
-                  itemMap={Department} 
-                  name="department" 
-                  value={all.department} 
+                  itemMap={SerialNumber} 
+                  name="serialNumber" 
+                  value={all.serialNumber} 
                   onChange={handleChange}/>
-                <InputProp  
+                <SelectProp  
                   title={"Base Office"} 
                   instruction="Select base of operation" 
-                  name="requestDate" 
-                  value={all.requestDate} 
+                  itemMap={BaseOffice}
+                  name="base" 
+                  value={all.base} 
                   onChange={handleChange}/>
-                <InputProp  
+                <SelectProp  
                   title={"Job Number"} 
+                  itemMap={JobNumber}
                   instruction="Auto Details" 
-                  name="requestDate" 
-                  value={all.requestDate} 
+                  name="jobNumber" 
+                  value={all.jobNumber} 
                   onChange={handleChange}/>
                 <TextAreaProp  
                   title={"Order Justification"} 
                   instruction="Auto Details" 
-                  name="requestDate" 
-                  value={all.requestDate} 
+                  name="justification" 
+                  value={all.justification} 
                   onChange={handleChange}/>
                 <SelectProp 
                   title={"Rig Assignment"} 
                   instruction="Select from dropdown"
-                  itemMap={FundingStatus} 
-                  name="fundingStatus" 
-                  value={all.fundingStatus} 
+                  itemMap={RigAssignment} 
+                  name="rigassignment" 
+                  value={all.rigassignment} 
                   onChange={handleChange}/>
                 <InputProp  
                   title={"Attach Sourced Quote 1:"} 
                   instruction="" 
                   name="requestDate" 
-                  value={all.requestDate} 
+                  // value={all.requestDate} 
                   onChange={handleChange}/>
                 <InputProp  
                   title={"Attach Sourced Quote 2:"} 
                   instruction="" 
                   name="requestDate" 
-                  value={all.requestDate} 
-                  onChange={handleChange}/>
-                <SelectProp 
-                  title={"Applicable Specifications, Drawings, Process Requirements, Inspection Instructions."} 
-                  instruction="Select from dropdown"
-                  itemMap={FundingStatus} 
-                  name="fundingStatus" 
-                  value={all.fundingStatus} 
+                  type="Date"
+                  // value={all.requestDate} 
                   onChange={handleChange}/>
                 <SelectProp 
                   title={"Procedure/Process/Equipment Approval Requirement"} 
-                  instruction="Select from dropdown"
-                  itemMap={FundingStatus} 
-                  name="fundingStatus" 
-                  value={all.fundingStatus} 
-                  onChange={handleChange}/>
-                <SelectProp 
-                  title={"Personnel’s Qualification Requirement"} 
                   instruction="Select from dropdown"
                   itemMap={FundingStatus} 
                   name="fundingStatus" 
@@ -173,22 +168,22 @@ console.log(all.inputArray)
                   instruction2={"Select from dropdown"}
                   instruction3={"If above is Others, please specify"}
                   instruction4={"Enter remark if Quality Management System Requirement is Others"}
-                  itemMap={FundingStatus} 
-                  selectName="fundingStatus" 
-                  selectValue={all.fundingStatus} 
-                  inputName={all.fundingStatus} 
-                  inputValue={all.fundingStatus} 
+                  itemMap={PersonnelQualification} 
+                  selectName="personnelQualification" 
+                  selectValue={all.personnelQualification} 
+                  inputName={"personnelQualification2"} 
+                  inputValue={all.personnelQualification2} 
                   onChange={handleChange}/>
                 <TextProp 
                   instruction1={"Quality Management System Requirement"}
                   instruction2={"Select from dropdown"}
                   instruction3={"If above is Others, please specify"}
                   instruction4={"Enter remark if Quality Management System Requirement is Others"}
-                  itemMap={FundingStatus} 
-                  selectName="fundingStatus" 
-                  selectValue={all.fundingStatus} 
-                  inputName={all.fundingStatus} 
-                  inputValue={all.fundingStatus} 
+                  itemMap={QMS} 
+                  selectName="qms" 
+                  selectValue={all.qms} 
+                  inputName={all.qms} 
+                  inputValue={all.qms} 
                   onChange={handleChange}/>
             </div>
              <section className='mat-req-input-loop' style={{marginTop:"2rem"}}>
@@ -207,7 +202,6 @@ console.log(all.inputArray)
                   </div>
                 { all.inputArray.map((item,i)=>
                     <div key={i} >
-                      {/* <FillOutForm item={item} i={i} inputArray={inputArray} setInputArray={setInputArray}/> */}
                       <FillOutForm item={item} i={i} all={all} setAll={setAll}/>
                    </div>                
                 )}

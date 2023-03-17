@@ -1,9 +1,23 @@
+.mainPage-cont{
+    width: 90vw;
+    margin-left: 4rem;
+}
+
+.mini-nav-cont{
+    /* position: absolute;
+    top: 4rem; */
+    width: 90vw;
+    margin-left: 6rem;
+}
 .mini-nav{
-    display: flex;
-    gap: 1.7rem; 
-    padding: 1rem 0rem 2.5rem 1rem; 
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem; 
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0rem 2rem 0rem; 
     color: blue;
-    width: 90%;
+    width: 100%;
 }
 .main-click-button-group{
     padding: 0.4rem 0.8rem ;

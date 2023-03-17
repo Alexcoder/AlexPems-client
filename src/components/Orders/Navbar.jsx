@@ -1,10 +1,9 @@
-import React from 'react';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-
+import "../AllCss/Navbar.css"
 
 const Navbar = () => {
   return (
-    <div style={{display:"flex", gap:"15rem"}} className="order-nav-bar">
+    <div  className="order-nav-bar">
         <div >My-Pems</div>
         <div>PERSONNEL & EQUIPMENT MANAGEMENT SYSTEM (PEMS)</div>
         <div style={{justifyContent:"flex-end", display:"flex", gap:"1rem"}}>

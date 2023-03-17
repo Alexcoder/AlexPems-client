@@ -2,7 +2,7 @@ import React from 'react'
 
 export const SelectProp = ({title, itemMap, name, value, onChange, instruction}) => {
   return (
-<div style={{width:"70%", textAlign:"start"}}>
+<div style={{width:"50%", textAlign:"start"}}>
     <div style={{marginBottom:"0.3rem",color:"blue", fontWeight:"650", fontSize:"0.9rem"}}>{title}</div>
     <select name={name} value={value} onChange={onChange} style={{width:"140%", padding:"0.5rem", color:"gray", border:"0.5px solid lightgray"}}>{itemMap.map(p=><option key={p}>{p}</option>)}</select>
     <div style={{marginBottom:"0.3rem",color:"gray", fontSize:"0.9rem"}}>{instruction}</div>
@@ -11,11 +11,11 @@ export const SelectProp = ({title, itemMap, name, value, onChange, instruction})
   )
 }
 
-export const InputProp = ({title, name, value, onChange, instruction}) => {
+export const InputProp = ({title, name, type, value, onChange, instruction}) => {
   return (
-<div style={{width:"65%", textAlign:"start"}}>
+<div style={{width:"50%", textAlign:"start"}}>
     <div style={{marginBottom:"0.3rem",color:"blue", fontWeight:"650", fontSize:"0.9rem"}}>{title}</div>
-    <input min="1" name={name} value={value} onChange={onChange} style={{width:"140%", padding:"0.5rem", color:"gray", border:"0.5px solid lightgray"}}/>
+    <input min="1" name={name} type={type} value={value} onChange={onChange} style={{width:"140%", padding:"0.5rem", color:"gray", border:"0.5px solid lightgray"}}/>
     <div style={{marginBottom:"0.3rem",color:"gray", fontSize:"0.9rem"}}>{instruction}</div>
 </div>
   )
@@ -23,7 +23,7 @@ export const InputProp = ({title, name, value, onChange, instruction}) => {
 
 export const TextAreaProp = ({title, name, value, onChange, }) => {
   return (
-    <div style={{width:"60%", textAlign:"start"}}>
+    <div style={{width:"50%", textAlign:"start"}}>
     <div style={{marginBottom:"0.3rem",color:"blue", fontWeight:"650", fontSize:"0.9rem"}}>{title}</div>
     <textarea rows="5" name={name} value={value} onChange={onChange} style={{width:"155%", padding:"0.5rem", border:"0.5px solid lightgray"}}/>
     <div style={{marginBottom:"0.3rem",color:"gray", fontSize:"0.9rem"}}>Enter the justification for this order</div>
@@ -33,7 +33,7 @@ export const TextAreaProp = ({title, name, value, onChange, }) => {
 
 export const TextProp = ({itemMap, inputName, selectName, inputValue, selectValue, onChange, instruction1, instruction2, instruction3, instruction4}) => {
   return (
-    <div style={{width:"90%",  border:"0.5px solid lightgray", borderRadius:"0.2rem"}}>
+    <div style={{width:"60%",  border:"0.5px solid lightgray", borderRadius:"0.2rem"}}>
        <section style={{width:"100%", textAlign:"center", }}>
          <div style={{marginBottom:"0.3rem",color:"blue", textAlign:"start", fontWeight:"650", fontSize:"0.9rem"}}>{instruction1}</div>
            <select name={selectName} value={selectValue} onChange={onChange} style={{width:"85%", padding:"0.5rem", border:"0.5px solid lightgray"}}>{itemMap.map(p=><option key={p}>{p}</option>)}</select>

@@ -72,7 +72,7 @@ const MainPage = () => {
    
 
    return (
-    <main>
+    <main className='mainPage-cont' >
       <div>
           <section style={{border:"0.5px solid lightgray",margin:"0rem 1.5rem", padding:"1rem 1rem 1rem 1rem", }}>
              <div style={{fontSize:"1.2rem", marginBottom:"1rem"}}>Requests & Orders Summary</div>

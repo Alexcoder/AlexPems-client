@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import CloseIcon from "@mui/icons-material/Close"
+// import CloseIcon from "@mui/icons-material/Close"
 import {SelectProp, InputProp,TextAreaProp, } from './Sub/props';
 // TextProp
 import { OrderCategory, Department, FundingStatus } from './Sub/utils';
@@ -51,7 +51,7 @@ const CashRequest = () => {
   return (
     <div className="CR-container">
         <div className="CR-paper-wrap">
-            <div style={{float:"right", color:"gray"}}><CloseIcon/></div>
+            {/* <div style={{float:"right", color:"gray"}}><CloseIcon/></div> */}
             <section style={{padding:"0.7rem"}}>
              <div style={{fontSize:"1.5rem"}}>Add New Cash Request</div>
              <hr style={{margin:"1rem 0rem", border:"1.3px solid lightgray"}}/>
